@@ -11,7 +11,7 @@ use base qw/ Tk::Derived Tk::Button /;
 
 Construct Tk::Widget 'HyperlinkButton';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 NAME
 

@@ -20,7 +20,7 @@ WriteMakefile(
 	MIN_PERL_VERSION  => 5.16.3, # unicode support
     META_MERGE     => {
         resources => {
-            repository => 'https://github.com/asb-capfan/Tk-TipEntry',
+            repository => 'https://github.com/asb-capfan/Tk-HyperlinkButton',
         },
     },
 );
