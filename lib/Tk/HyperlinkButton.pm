@@ -203,9 +203,9 @@ When a new hyperlink is created, it has default event bindings to the following 
 
 =over
 
-=item C<Any-Enter>: Will highlight the hyperlink similar to what you see in a web browser. Also changes the cursor.
+=item * C<Any-Enter>: Will highlight the hyperlink similar to what you see in a web browser. Also changes the cursor.
 
-=item C<Any-Leave>: Will reset the highlightning or appearance changes done by the other events.
+=item * C<Any-Leave>: Will reset the highlightning or appearance changes done by the other events.
 
 =back
 
