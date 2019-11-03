@@ -25,12 +25,12 @@ Tk::HyperlinkButton - Create a clickable hyperlink button to open a web browser
   
   my $link_text = 'metacpan.org';
   my $link_target = 'http://www.metacpan.org';
-  my $link_callback = sub{ your_method_here(); };
+  my $link_callback = sub{ print "your callback here\n"; };
   
-  my $hyperlink_widget = Tk::HyperlinkButton->new(
-    -text => $link_text,
-    -target => $link_target,
-    -command => $link_callback,
+  my $hyperlink_widget = $mw->HyperlinkButton(
+      -text => $link_text,
+      -target => $link_target,
+      -command => $link_callback,
   );
   
   $hyperlink_widget->pack;
@@ -75,43 +75,17 @@ The widget also inherits all the methods provided by the generic L<Tk::Widget> c
 
 =cut
 
-##=head2 ClassInit( $class, $mw )
-##
-##Class method.
-##
-##Creates the bindings to change the mouse cursor and relief (raised/flat).
-##
-##=cut
-
-sub ClassInit {
-	my( $class, $mw ) = @_;
-	#... e.g., class bindings here ...
-	$class->SUPER::ClassInit( $mw );
-    
-    $mw->bind($class, '<Any-Enter>' => sub{
-        highlight_link_cursor($_[0], 'raised', 'hand2');
-    });
-    
-    $mw->bind($class, '<Any-Leave>' => sub{
-        highlight_link_cursor($_[0], 'flat', 'xterm');
-    });
-    
-	return;
-} # /ClassInit
-
-
-
-
 ##=head2 Populate( %args )
 ##
 ##Handles the custom widget attributes and defaults (e.g. blue font color).
+##
+##Creates the bindings to change the mouse cursor and relief (raised/flat).
+##Bindings are created as instance bindings, because we do not want to overwrite the L<Tk::Button> class bindings.
 ##
 ##=cut
 
 sub Populate {
 	my( $self, $args ) = @_;
-
-	$self->SUPER::Populate( $args );
 	
     my $link_text = $args->{'-text'};
     
@@ -127,6 +101,8 @@ sub Populate {
         $link_callback = sub{ $self->open_link_in_browser(); };
         $args->{'-command'} = $link_callback;
     }
+    
+    $self->SUPER::Populate( $args );
     
     my %defaults = (
         -relief => 'flat',
@@ -150,6 +126,16 @@ sub Populate {
 	$self->Delegates(
 		'DEFAULT'	=> $self,
 	);
+    
+    $self->bind('<Any-Enter>' => sub{
+        highlight_link_cursor($_[0], 'raised', 'hand2');
+        return;
+    });
+    
+    $self->bind('<Any-Leave>' => sub{
+        highlight_link_cursor($_[0], 'flat', 'xterm');
+        return;
+    });
     
 	return;
 } # /Populate
@@ -184,9 +170,9 @@ sub open_link_in_browser {
     my $self = shift;
     my $target = $self->cget('-target');
     
-    # debug:
-    print "target: $target\n";
-    print "command used to start the browser: " . Browser::Open::open_browser_cmd() . "\n";
+    ## debug:
+    #print "target: $target\n";
+    #print "command used to start the browser: " . Browser::Open::open_browser_cmd() . "\n";
     
     my $ok = open_browser($target);
     # ! defined($ok): no recognized command found
@@ -199,7 +185,7 @@ sub open_link_in_browser {
 
 =head1 BINDINGS
 
-When a new hyperlink is created, it has default event bindings to the following events (plus those of a L<Tk::Button>):
+When a new hyperlink is created, it has default instance event bindings to the following events:
 
 =over
 
