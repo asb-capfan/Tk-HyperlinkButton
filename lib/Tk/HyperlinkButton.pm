@@ -15,7 +15,7 @@ our $VERSION = '0.02';
 
 =head1 NAME
 
-Tk::HyperlinkButton - Create a clickable hyperlink button to open a web browser
+Tk::HyperlinkLabel - Create a clickable hyperlink button to open a web browser
 
 =head1 SYNOPSIS
 
@@ -69,7 +69,7 @@ By default, clicking the hyperlink will open the system's default browser and na
 
 =head1 WIDGET METHODS
 
-The HyperlinkButton method creates a widget object.
+The HyperlinkLabel method creates a widget object.
 This object supports the C<configure> and C<cget> methods described in L<Tk::options> which can be used to enquire and modify the options described above.
 The widget also inherits all the methods provided by the generic L<Tk::Widget> class.
 
@@ -236,7 +236,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =head1 KEYWORDS
 
-button, widget, hyperlink, link, web link
+label, widget, hyperlink, link, web link
 
 =cut
 
