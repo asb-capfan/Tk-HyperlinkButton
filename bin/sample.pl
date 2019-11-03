@@ -33,13 +33,28 @@ $hyperlink_sample1->HyperlinkButton(
 )->pack(-side => 'left',);
 
 
+
+
 my $hyperlink_sample2 = $mw->Frame()->pack(-fill => 'x');
 
 $hyperlink_sample2->Label(-text => 'Additional Perl modules can found on the')->pack(-side => 'left',);
 $hyperlink_sample2->HyperlinkButton(
-    -text => 'http://www.metacpan.org',
+    -text => 'MetaCPAN',
+    -target => 'http://www.metacpan.org',
 )->pack(-side => 'left',);
 $hyperlink_sample2->Label(-text => 'web site.')->pack(-side => 'left',);
 
+
+
+
+my $hyperlink_sample3 = $mw->Frame()->pack(-fill => 'x');
+
+$hyperlink_sample3->Label(-text => 'Additional Perl modules can found on the')->pack(-side => 'left',);
+$hyperlink_sample3->HyperlinkButton(
+    -text => 'MetaCPAN',
+    -target => 'http://www.metacpan.org',
+    -command => sub{ say "callback here"; },
+)->pack(-side => 'left',);
+$hyperlink_sample3->Label(-text => 'web site.')->pack(-side => 'left',);
 
 $mw->MainLoop;
