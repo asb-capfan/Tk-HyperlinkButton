@@ -21,7 +21,10 @@ Tk::HyperlinkButton - Create a clickable hyperlink button to open a web browser
 
   use Tk::HyperlinkButton;
   
-  my $mw = MainWindow->new();
+  my $mw = MainWindow->new;
+  
+  # most simple form:
+  $mw->HyperlinkButton(-text => 'http://www.metacpan.org')->pack;
   
   my $link_text = 'metacpan.org';
   my $link_target = 'http://www.metacpan.org';
