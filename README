@@ -25,7 +25,7 @@ modules from CPAN. If you don't have one, have a look at:
 DEPENDENCIES
 
 This module requires some other modules and libraries.
-See Makefile.PL for a detailled list. If you are going to install
+See Makefile.PL for a detailed list. If you are going to install
 via cpan shell or PPM, you don't have to care about.
 
 COPYRIGHT AND LICENCE
