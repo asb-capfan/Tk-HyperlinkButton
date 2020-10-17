@@ -28,7 +28,7 @@ This module requires some other modules and libraries.
 See Makefile.PL for a detailed list. If you are going to install
 via cpan shell or PPM, you don't have to care about.
 
-COPYRIGHT AND LICENCE
+COPYRIGHT AND LICENSE
 
 Copyright (C) 2019 by Alexander Becker
 
